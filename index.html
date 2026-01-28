@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endgame Farms - Heritage Game Fowl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f9fafb;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #d2691e 100%);
+            color: white;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #cd853f;
+        }
+
+        .header-top {
+            background: rgba(0,0,0,0.2);
+            padding: 0.8rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #cd853f;
+        }
+
+        .header-main {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.8rem;
+            background: rgba(251,191,36,0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            border: 2px solid rgba(251,191,36,0.4);
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            background: rgba(251,191,36,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251,191,36,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #d97706;
+        }
+
+        .value-card h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        section {
+            background: white;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            padding-bottom: 1rem;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #d97706, #f59e0b);
+        }
+
+        .birds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .bird-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .bird-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .bird-image {
+            width: 100%;
+            min-height: 280px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .bird-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .bird-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 400px;
+        }
+
+        .bird-info {
+            padding: 2rem;
+        }
+
+        .bird-info h3 {
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .bird-price {
+            color: #d97706;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0.8rem 0;
+        }
+
+        .bird-description {
+            color: #475569;
+            margin: 0.8rem 0 1.5rem 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(217,119,6,0.3);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(217,119,6,0.4);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .shipping-info {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .shipping-info strong {
+            color: #78350f;
+            font-size: 1.1rem;
+        }
+
+        .shipping-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .shipping-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .shipping-card h4 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .shipping-card .price {
+            color: #d97706;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(5,150,105,0.3);
+            font-size: 1.05rem;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(5,150,105,0.5);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border: 2px solid #cbd5e1;
+        }
+
+        .contact-info p {
+            margin: 0.8rem 0;
+            font-size: 1.05rem;
+        }
+
+        .contact-info strong {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .contact-info a {
+            color: #d97706;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #475569;
+            font-size: 0.95rem;
+            background: #1e293b;
+            color: #cbd5e1;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .birds-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            🏆 Heritage Bloodlines | Nationwide Shipping
+        </div>
+        <div class="header-main">
+            <h1>ENDGAME FARMS</h1>
+            <p class="subtitle">Heritage Game Fowl</p>
+            <div class="social-links">
+                <a href="https://instagram.com/game2theend" target="_blank">📷 Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=100092835894825" target="_blank">📘 Facebook</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="value-props" style="background: linear-gradient(135deg, #8b6f47 0%, #6b5642 100%); color: white; padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <p style="font-size: 1.15rem; line-height: 1.8;">At Endgame Farms, we raise heritage game fowl the old-fashioned way: with dedication, respect for the bloodlines, and a commitment to quality that's been passed down through generations. Every bird we offer represents our family's legacy and passion for preserving these magnificent breeds.</p>
+        </div>
+
+        <section id="available-birds">
+            <h2>Available Birds</h2>
+            
+            <div class="birds-grid">
+                
+                <div class="bird-card">
+                    <div class="bird-image">
+                        <img src="https://i.imgur.com/VqXFbtr.png" alt="Kelly Mug">
+                    </div>
+                    <div class="bird-info">
+                        <h3>Kelly Mug</h3>
+                        <div class="bird-price">$200 + shipping</div>
+                        <p class="bird-description">Heritage Kelly Mug bloodline. Excellent conformation and temperament. Strong genetics from proven lines.</p>
+                        <a href="#contact" class="contact-btn">Purchase Now →</a>
+                    </div>
+                </div>
+
+                <div class="bird-card">
+                    <div class="bird-image">
+                        <img src="https://i.imgur.com/Azjy4HV.png" alt="American Asil">
+                    </div>
+                    <div class="bird-info">
+                        <h3>American Asil</h3>
+                        <div class="bird-price">$300 + shipping</div>
+                        <p class="bird-description">Pure American Asil breeding. Strong genetics and healthy birds. Premium quality from established bloodlines.</p>
+                        <a href="#contact" class="contact-btn">Purchase Now →</a>
+                    </div>
+                </div>
+
+                <div class="bird-card">
+                    <div class="bird-image">
+                        <img src="https://i.imgur.com/aNdDhlh.png" alt="Kelly Mug / Asil Cross">
+                    </div>
+                    <div class="bird-info">
+                        <h3>Kelly Mug / Asil Cross</h3>
+                        <div class="bird-price">$350 + shipping</div>
+                        <p class="bird-description">Exceptional cross of Kelly Mug and Asil bloodlines. Best traits from both premier breeds.</p>
+                        <a href="#contact" class="contact-btn">Purchase Now →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="shipping">
+            <h2>Shipping Information</h2>
+            <div class="shipping-info">
+                <p><strong>Shipping Schedule:</strong> All birds ship every other Monday</p>
+                <p><strong>Coverage:</strong> We ship to all states within the United States</p>
+            </div>
+            
+            <div class="shipping-details">
+                <div class="shipping-card">
+                    <h4>Midwest Region</h4>
+                    <p style="font-size: 0.9rem; margin: 0.5rem 0;">Wisconsin, Minnesota, Iowa, Ohio, Illinois, Indiana, Michigan</p>
+                    <p class="price">$100</p>
+                    <p>per bird</p>
+                </div>
+                <div class="shipping-card">
+                    <h4>All Other States</h4>
+                    <p class="price">$150</p>
+                    <p>per bird</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #475569; text-align: center; font-size: 1.05rem;">
+                <strong>Need multiple birds?</strong> Contact us for pair pricing and volume discounts.
+            </p>
+        </section>
+
+        <section id="contact">
+            <h2>Order & Payment</h2>
+            <div class="contact-info">
+                <p><strong>📧 Email:</strong> <a href="mailto:totheendgamefarm@gmail.com">totheendgamefarm@gmail.com</a></p>
+                <p><strong>💬 Best Contact:</strong> Instagram DM or Email</p>
+                <p style="margin-top: 1.5rem;"><strong>How to Order:</strong></p>
+                <p style="color: #475569;">Send payment with bird details (breed, quantity) as confirmation. We'll respond within 24 hours with shipping confirmation and tracking details.</p>
+            </div>
+            
+            <div class="payment-methods">
+                <a href="https://cash.app/$game2theend" class="payment-btn" target="_blank">
+                    <span>💵</span>
+                    <span>CashApp: $game2theend</span>
+                </a>
+                <a href="https://venmo.com/namaru" class="payment-btn" target="_blank">
+                    <span>💳</span>
+                    <span>Venmo: @namaru</span>
+                </a>
+                <a href="#" class="payment-btn" onclick="alert('Send to: heverett22@gmail.com'); return false;">
+                    <span>🏦</span>
+                    <span>Zelle: heverett22@gmail.com</span>
+                </a>
+            </div>
+            
+            <div class="guarantee-box">
+                <h3>All birds are raised for breeding purposes only.</h3>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">ENDGAME FARMS</p>
+        <p>&copy; 2025 Endgame Farms | Heritage Game Fowl</p>
+    </footer>
+</body>
+</html>
